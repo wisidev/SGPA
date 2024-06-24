@@ -40,13 +40,13 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+    public ResponseEntity<String> deleteById(@PathVariable Long id) {
         Optional<User> user = repository.findById(id);
         if (user.isPresent()) {
             repository.deleteById(id);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok("User deletado");
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(404).body("User não encontrado");
         }
     }
 }
