@@ -1,6 +1,6 @@
 # SGPA
 
-## Membros: Willian Guilherme e Gustavo Rodrigues
+## Membros: Willian Guilherme, Gustavo Rodrigues, Yuri Martinelli e Eric Costa Ciciliotti
 
 ## Orientador: Lucas Barboza
 
