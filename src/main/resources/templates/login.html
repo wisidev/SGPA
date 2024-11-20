@@ -13,11 +13,11 @@
     <section class="first-part">
         <h1>E S O S</h1>
         <p>Guiando sua saúde para um amanhã melhor</p>
-        <img th:src="@{/images/medica.png}" alt="médica">
+        <img src="./src/images/medica.png" alt="médica">
     </section>
 
     <section class="second-part">
-        <img th:src="@{/images/logo.png}" alt="logo">
+        <img src="./src/images/logo.png" alt="logo">
         <p>Bem vindo</p>
 
         <form action="/login" method="post">
@@ -39,6 +39,10 @@
             </div>
 
             <button type="submit" class="btn">Login</button>
+
+            <div class="register-link">
+                <p>Não possui uma conta <a href="#">Registre-se</a></p>
+            </div>
         </form>
     </section>
 </body>
