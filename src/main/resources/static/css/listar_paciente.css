@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e3f4ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #4c557a;
+}
+
+.container {
+    gap: 20px;
+    padding: 20px;
+    width: 526px;
+    height: 631px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.patients-section {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    border: 2px solid #ddd;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    margin: 10px;
+}
+
+.patient-tittle {
+    padding: 5px;
+    border-bottom: 2px solid #ddd;
+}
+
+.patient-tittle h2 {
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.patient-tittle p {
+    margin-top: -10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.order {
+    font-weight: bold;
+}
+
+.patients-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.patient-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+    margin: 20px 30px;
+}
+
+.patient-time {
+    display: flex;
+    flex-direction: column;
+    margin-left: 18px;
+}
+
+.patient-time .name {
+    font-size: 18px;
+}
+
+.patient-time .status {
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+.patient-item.selected {
+    background-color: #ffe6e6;
+    border-color: #ff4d4d;
+}
+
+.urgency {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 17px;
+    color: #fff;
+    font-weight: bold;
+    height: 30px;
+    width: 160px;
+}
+
+.urgency p {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-11px);
+}
+
+.urgency.green {
+    background-color: #28a745;
+    border: 1px solid green;
+}
+
+.urgency.yellow {
+    background-color: #ffc107;
+    border: 1px solid yellow;
+}
+
+.urgency.orange {
+    background-color: #fd7e14;
+    border: 1px solid orange;
+}
+
+.urgency.red {
+    background-color: #dc3545;
+    border: 1px solid red;
+}
+
+.new-patient-btn {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.new-patient-btn:hover {
+    background-color: #0056b3;
+}

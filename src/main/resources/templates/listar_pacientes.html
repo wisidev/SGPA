@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Pacientes</title>
+    <link rel="stylesheet" th:href="@{/css/listar_paciente.css}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="patients-section">
+            <div class="patient-tittle">
+                <h2>Pacientes</h2>
+                <p>Organizar por: <span class="order">ordem de risco</span></p>
+            </div>
+
+            <ul class="patients-list">
+                <li class="patient-item selected">
+                    <div class="patient-time">
+                        <span class="name">Rafael Muniz</span>
+                        <span class="status">Em atendimento</span>
+                    </div>
+
+                    <span class="urgency red"><p>Emergência</p></span>
+                </li>
+
+                <li class="patient-item">
+                    <div class="patient-time">
+                        <span class="name">Caio Pereira</span>
+                        <span class="status">Em atendimento</span>
+                    </div>
+
+                    <span class="urgency orange"><p>Muito urgente</p></span>
+                </li>
+
+                <li class="patient-item">
+                    <div class="patient-time">
+                        <span class="name">Giovanna Nunes</span>
+                        <span class="status">25 min até atendimento</span>
+                    </div>
+
+                    <span class="urgency yellow"><p>Urgente</p></span>
+                </li>
+
+                <li class="patient-item">
+                    <div class="patient-time">
+                        <span class="name">Maria Serafim</span>
+                        <span class="status">30 min até atendimento</span>
+                    </div>
+
+                    <span class="urgency green"><p>Pouco urgente</p></span>
+                </li>
+
+                <li class="patient-item">
+                    <div class="patient-time">
+                        <span class="name">Lucas Santos</span>
+                        <span class="status">45 min até atendimento</span>
+                    </div>
+
+                    <span class="urgency green"><p>Pouco urgente</p></span>
+                </li>
+
+                <li class="patient-item">
+                    <div class="patient-time">
+                        <span class="name">Denise Rodrigues</span>
+                        <span class="status">45 min até atendimento</span>
+                    </div>
+
+                    <span class="urgency green"><p>Pouco urgente</p></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
