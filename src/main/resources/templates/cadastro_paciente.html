@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Paciente</title>
+    <link rel="stylesheet" th:href="@{/css/cadastro-paciente.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <header>
+        <span>Logado como: Enfermeira Mariana Lopes</span>
+    </header>
+
+    <div class="form-header">
+        <i class="bi bi-plus"></i>
+        <button class="new-patient-btn">Novo paciente</button>
+    </div>
+
+    <div class="container">
+        <form class="patient-form">
+            <div class="form-group">
+                <label for="patient-name">Nome do paciente:</label>
+                <input type="text" id="patient-name">
+            </div>
+
+            <section class="form-wrapper">
+                <div class="form-text">
+                    <label for="patient-complaint">Queixa do paciente:</label>
+                    <textarea id="patient-complaint"></textarea>
+                </div>
+
+                <div class="form-person">
+                    <label class="info-title">Informações pessoais:</label>
+
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <input type="text" class="address" id="address" placeholder="Endereço:">
+                        </div>
+
+                        <div class="info-item">
+                            <input type="email" class="email" id="email" placeholder="E-mail:">
+                        </div>
+
+                        <div class="info-item">
+                            <input type="tel" class="telefone" id="phone" placeholder="Telefone:">
+                        </div>
+
+                        <div class="info-item">
+                            <input type="text" class="health-plan" id="health-plan" placeholder="Plano de saúde:">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="medical-container">
+                <label class="medical-title">Informações médicas:</label>
+        
+                <div class="medical-grid">
+                    <div class="medical-item">
+                        <input type="text" id="gender" placeholder="Sexo:">
+                    </div>
+        
+                    <div class="medical-item">
+                        <input type="date" id="dob" placeholder="Data de nascimento:">
+                    </div>
+        
+                    <div class="medical-item">
+                        <input type="text" id="blood-type" placeholder="Tipo sanguíneio:">
+                    </div>
+        
+                    <div class="medical-item">
+                        <input type="text" id="medical-history" placeholder="Histórico de doenças:">
+                    </div>
+        
+                    <div class="medical-item">
+                        <input type="text" id="allergies" placeholder="Alergias:">
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-section">
+                <label>Status Protocolo de Manchester:</label>
+
+                <div class="status-buttons">
+                    <button class="status emergency">Emergência</button>
+                    <button class="status very-urgent">Muito urgente</button>
+                    <button class="status urgent">Urgente</button>
+                    <button class="status low-urgent">Pouco urgente</button>
+                    <button class="status non-urgent">Não urgente</button>
+                </div>
+            </div>
+
+            <div class="medication-section">
+                <label class="medication-btn">Informar medicação </label>
+                <input type="text">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

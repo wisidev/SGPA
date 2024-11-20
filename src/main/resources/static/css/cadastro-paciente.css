@@ -1,0 +1,299 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #58abff;
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    color: #f0f0f0;
+    padding: 10px;
+    font-size: 12px; 
+    text-decoration: underline; 
+    transform: translateX(-378px);
+}
+
+.form-header {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    background-color: #f0f0f0;
+    width: 275px;
+    border-radius: 8px;
+    cursor: pointer;
+    transform: translate(419px);
+    margin-bottom: 10px;
+}
+
+.form-header:hover {
+    background-color: white;
+}
+
+i {
+    font-size: 20px;
+    background: #005bb5;
+    color: white;
+    border-radius: 100%;
+    margin-right:5px;
+    width: 20px;
+    height: 20px;
+}
+
+.new-patient-btn {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.patient-form {
+    padding: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    margin-top: 5px;
+    border-radius: 10px;
+    height: 47px;
+}
+
+textarea {
+    resize: none;
+    height: 214px;
+}
+
+.form-wrapper {
+    display: flex;
+}
+
+.form-text {
+    margin-bottom: 15px;
+    margin-left: 40px;
+    margin-right: 15px;
+    width: 50%;
+}
+
+.form-text label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-person {
+    gap: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 40px;
+    width: 50%;
+}
+
+.info-title {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    height: 77px;
+    background-color: #f0f0f0;
+}
+
+.medical-container {
+    padding: 5px;
+    width: 889px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 15px;
+}
+
+.medical-title {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.medical-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    border: 2px solid #ddd;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 889px;
+    transform: translateX(-5px);
+}
+
+.medical-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.medical-item label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.medical-item input {
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.status-section {
+    margin-bottom: 15px;
+    width: 850px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status-section label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+    transform: translateX(-256px);
+}
+
+.status-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.status {
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    width: 163px;
+    height: 60px;
+    text-decoration: underline;
+    margin-right: 5px;
+    transform: translateX(63px);
+}
+
+.status.emergency {
+    background: #e53935;
+}
+
+.status.very-urgent {
+    background: #ffb300;
+}
+
+.status.urgent {
+    background: #fdd835;
+}
+
+.status.low-urgent {
+    background: #43a047;
+}
+
+.status.non-urgent {
+    background: #29b6f6;
+}
+
+.status:hover {
+    opacity: 0.9;
+}
+
+.medication-section {
+    padding: 0px 15px 15px 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 889px;
+    background-color: white;
+    transform: translateX(42px);
+}
+
+.medication-btn {
+    background: #0078d7;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto 0;
+    margin-bottom: 5px;
+    width: fit-content;
+    text-align: left;
+    transform: translateX(-349px);
+}
+
+.medication-btn:hover {
+    background: #005bb5;
+}
+
+.medication-section input {
+    background-color: #f0f0f0;
+    height: 200px;
+}
