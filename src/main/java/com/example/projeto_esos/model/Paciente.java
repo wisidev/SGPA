@@ -65,4 +65,19 @@ public class Paciente {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setId'");
     }
+
+    public Object getNomePaciente() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getNomePaciente'");
+    }
+
+    public void setNomePaciente(Object nomePaciente2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setNomePaciente'");
+    }
+
+    public Object getQueixaPaciente() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getQueixaPaciente'");
+    }
 }

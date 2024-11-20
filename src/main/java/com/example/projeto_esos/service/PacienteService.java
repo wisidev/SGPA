@@ -7,38 +7,33 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class PacienteService {
 
     @Autowired
     private PacienteRepository pacienteRepository;
 
-    // Método para salvar um paciente
     public Paciente salvarPaciente(Paciente paciente) {
         return pacienteRepository.save(paciente);
     }
 
-    // Método para buscar todos os pacientes
     public List<Paciente> buscarTodosPacientes() {
         return pacienteRepository.findAll();
     }
 
-    // Método para buscar um paciente pelo id
     public Optional<Paciente> buscarPacientePorId(Long id) {
         return pacienteRepository.findById(id);
     }
 
-    // Método para atualizar um paciente
-    public Paciente atualizarPaciente(Long id, Paciente paciente) {
-        if (pacienteRepository.existsById(id)) {
-            paciente.setId(id);
+    public Paciente atualizarPaciente(Long id, Paciente pacienteAtualizado) {
+        return pacienteRepository.findById(id).map(paciente -> {
+            paciente.setNomePaciente(pacienteAtualizado.getNomePaciente());
+            paciente.setNomePaciente(pacienteAtualizado.getQueixaPaciente());
+            // Atualizar outros campos
             return pacienteRepository.save(paciente);
-        }
-        return null;  // Retorna null se o paciente não existir
+        }).orElse(null);
     }
 
-    // Método para deletar um paciente
     public void deletarPaciente(Long id) {
         pacienteRepository.deleteById(id);
     }
