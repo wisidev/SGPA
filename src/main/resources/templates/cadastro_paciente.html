@@ -10,33 +10,29 @@
 </head>
 
 <body>
-    <header>
-        <span>Logado como: Enfermeira Mariana Lopes</span>
-    </header>
-
-    <section class="section-header">
-        <div class="form-header">
-            <i class="bi bi-plus"></i>
-            <button class="new-patient-btn">Novo paciente</button>
-        </div>
-        
-        <div class="save-header">
-            <i class="bi bi-check-lg"></i>
-            <button class="save-patient-btn">Salvar paciente</button>
-        </div>
-    </section>
-
     <div class="container">
-        <form class="patient-form">
+        <form class="patient-form" id="patient-form" action="/pacientes/salvar" method="post">
+            <section class="section-header">
+                <div class="form-header">
+                    <i class="bi bi-list"></i>
+                    <button class="new-patient-btn"><a th:href="@{/listar_pacientes}">Listar Pacientes</a></button>
+                </div>
+        
+                <div class="save-header">
+                    <i class="bi bi-check-lg"></i>
+                    <button class="save-patient-btn" onclick="savePatient()">Salvar Paciente</button>
+                </div>
+            </section>
+
             <div class="form-group">
                 <label for="patient-name">Nome do paciente:</label>
-                <input type="text" id="patient-name">
+                <input type="text" id="patient-name" required>
             </div>
 
             <section class="form-wrapper">
                 <div class="form-text">
                     <label for="patient-complaint">Queixa do paciente:</label>
-                    <textarea id="patient-complaint"></textarea>
+                    <textarea id="patient-complaint" required></textarea>
                 </div>
 
                 <div class="form-person">
@@ -44,15 +40,15 @@
 
                     <div class="info-grid">
                         <div class="info-item">
-                            <input type="text" class="address" id="address" placeholder="Endereço:">
+                            <input type="text" class="address" id="address" placeholder="Endereço:" required>
                         </div>
 
                         <div class="info-item">
-                            <input type="email" class="email" id="email" placeholder="E-mail:">
+                            <input type="email" class="email" id="email" placeholder="E-mail:" required>
                         </div>
 
                         <div class="info-item">
-                            <input type="tel" class="telefone" id="phone" placeholder="Telefone:">
+                            <input type="tel" class="telefone" id="phone" placeholder="Telefone:" required>
                         </div>
 
                         <div class="info-item">
@@ -64,24 +60,24 @@
 
             <div class="medical-container">
                 <label class="medical-title">Informações médicas:</label>
-        
+
                 <div class="medical-grid">
                     <div class="medical-item">
                         <input type="text" id="gender" placeholder="Sexo:">
                     </div>
-        
+
                     <div class="medical-item">
                         <input type="date" id="dob" placeholder="Data de nascimento:">
                     </div>
-        
+
                     <div class="medical-item">
-                        <input type="text" id="blood-type" placeholder="Tipo sanguíneio:">
+                        <input type="text" id="blood-type" placeholder="Tipo sanguíneo:">
                     </div>
-        
+
                     <div class="medical-item">
                         <input type="text" id="medical-history" placeholder="Histórico de doenças:">
                     </div>
-        
+
                     <div class="medical-item">
                         <input type="text" id="allergies" placeholder="Alergias:">
                     </div>
@@ -92,20 +88,56 @@
                 <label>Status Protocolo de Manchester:</label>
 
                 <div class="status-buttons">
-                    <button class="status emergency">Emergência</button>
-                    <button class="status very-urgent">Muito urgente</button>
-                    <button class="status urgent">Urgente</button>
-                    <button class="status low-urgent">Pouco urgente</button>
-                    <button class="status non-urgent">Não urgente</button>
+                    <button class="status emergency" type="button" onclick="setRisk('Emergência')">Emergência</button>
+                    <button class="status very-urgent" type="button" onclick="setRisk('Muito urgente')">Muito urgente</button>
+                    <button class="status urgent" type="button" onclick="setRisk('Urgente')">Urgente</button>
+                    <button class="status low-urgent" type="button" onclick="setRisk('Pouco urgente')">Pouco urgente</button>
+                    <button class="status non-urgent" type="button" onclick="setRisk('Não urgente')">Não urgente</button>
                 </div>
             </div>
 
             <div class="medication-section">
-                <label class="medication-btn">Informar medicação </label>
-                <textarea id=""></textarea>
+                <label class="medication-btn">Informar medicação</label>
+                <textarea id="medication"></textarea>
             </div>
         </form>
     </div>
+
+    <script>
+
+        function setRisk(risk) {
+            alert("Grau de risco selecionado: " + risk);
+            // Aqui você pode salvar o grau de risco em uma variável global ou enviá-lo ao servidor
+        }
+
+        function savePatient() {
+            const form = document.getElementById("patient-form");
+            if (form.checkValidity()) {
+                // Aqui você deve implementar o envio dos dados ao servidor (exemplo usando fetch)
+                const patientData = {
+                    name: document.getElementById("patient-name").value,
+                    complaint: document.getElementById("patient-complaint").value,
+                    address: document.getElementById("address").value,
+                    email: document.getElementById("email").value,
+                    phone: document.getElementById("phone").value,
+                    healthPlan: document.getElementById("health-plan").value,
+                    gender: document.getElementById("gender").value,
+                    dob: document.getElementById("dob").value,
+                    bloodType: document.getElementById("blood-type").value,
+                    medicalHistory: document.getElementById("medical-history").value,
+                    allergies: document.getElementById("allergies").value,
+                    medication: document.getElementById("medication").value,
+                };
+
+                console.log("Paciente salvo:", patientData);
+                alert("Paciente salvo com sucesso!");
+                form.reset();
+            } else {
+                alert("Preencha todos os campos obrigatórios!");
+            }
+        }
+    </script>
+
 </body>
 
 </html>

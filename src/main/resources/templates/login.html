@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -13,17 +13,17 @@
     <section class="first-part">
         <h1>E S O S</h1>
         <p>Guiando sua saúde para um amanhã melhor</p>
-        <img src="./src/images/medica.png" alt="médica">
+        <img th:src="@{/images/medica.png}" alt="Médica">
     </section>
 
     <section class="second-part">
-        <img src="./src/images/logo.png" alt="logo">
+        <img th:src="@{/images/logo.png}" alt="logo">
         <p>Bem vindo</p>
 
         <form action="/login" method="post">
             <section class="form-content">
                 <div class="input-box">
-                    <input type="text" placeholder="Usuario" name="usuario" th:value="${usuario}">
+                    <input type="text" placeholder="Usuário" name="usuario" th:value="${usuario}">
                     <i class="bi bi-person-fill"></i>
                 </div>
                 
@@ -35,13 +35,12 @@
 
             <div class="remember-forgot">
                 <label><input type="checkbox">Manter logado</label>
-                <a href="#">Esqueceu a senha</a>
             </div>
 
             <button type="submit" class="btn">Login</button>
 
             <div class="register-link">
-                <p>Não possui uma conta <a href="#">Registre-se</a></p>
+                <p>Não possui uma conta? <a th:href="@{/cadastro_usuario}">Registre-se</a></p>
             </div>
         </form>
     </section>

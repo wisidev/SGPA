@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.projeto_esos.model.Usuario;
-import com.example.projeto_esos.service.UsuarioService; // Crie o serviço para interagir com o banco de dados
+import com.example.projeto_esos.service.UsuarioService;
 
 @Controller
 public class UsuarioController {
@@ -19,25 +19,41 @@ public class UsuarioController {
     // Tela de login
     @GetMapping("/login")
     public String loginPage() {
-        return "login";  // login.html
+        System.out.println("Rota /login acessada"); // Log para debug
+        return "login"; // Retorna o template login.html
     }
 
-    // Tela de consulta se o usuário está no banco
-    @GetMapping("/usuario/consulta")
-    public String consultaUsuarioPage() {
-        return "usuario_consulta";  // usuario_consulta.html
-    }
+    // Processa o login
+    @PostMapping("/login")
+    public String processarLogin(@RequestParam String usuario, @RequestParam String senha, Model model) {
+        Usuario usuarioExistente = usuarioService.findByUsername(usuario);
 
-    // Verificar se o usuário existe no banco
-    @PostMapping("/usuario/consulta")
-    public String verificarUsuario(@RequestParam String username, Model model) {
-        Usuario usuario = usuarioService.findByUsername(username);
-        if (usuario != null) {
-            model.addAttribute("usuario", usuario);
-            return "usuario_consulta";  // Exibe os dados do usuário
+        if (usuarioExistente != null && usuarioExistente.getSenha().equals(senha)) {
+            // Redireciona para a página de cadastro de pacientes após login bem-sucedido
+            return "redirect:/cadastro_paciente";
         } else {
-            model.addAttribute("erro", "Usuário não encontrado.");
-            return "usuario_consulta";  // Exibe a mensagem de erro
+            model.addAttribute("erro", "Usuário ou senha inválidos.");
+            return "login"; // Retorna à página de login com erro
         }
+    }
+
+    // Tela de cadastro de usuário
+    @GetMapping("/cadastro_usuario")
+    public String cadastroUsuarioPage() {
+        return "cadastro_usuario"; // Retorna o template cadastro_usuario.html
+    }
+
+    // Processa o cadastro de usuário
+    @PostMapping("/cadastro_usuario")
+    public String processarCadastro(@RequestParam String usuario, @RequestParam String senha, Model model) {
+        Usuario novoUsuario = new Usuario(usuario, senha);
+        usuarioService.salvarUsuario(novoUsuario);
+        return "redirect:/login"; // Redireciona para a página de login após o cadastro
+    }
+
+    // Tela de cadastro de pacientes
+    @GetMapping("/cadastro_paciente")
+    public String cadastroPacientePage() {
+        return "cadastro_paciente"; // Retorna o template cadastro_paciente.html
     }
 }

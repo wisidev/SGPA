@@ -1,10 +1,6 @@
 package com.example.projeto_esos.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 
 @Entity
 public class Usuario {
@@ -17,16 +13,14 @@ public class Usuario {
     private String username;
 
     @Column(nullable = false)
-    private String password;
+    private String senha;
 
-    // Construtor vazio (obrigatório para JPA)
-    public Usuario() {
-    }
+    // Construtores
+    public Usuario() {}
 
-    // Construtor com parâmetros (opcional)
-    public Usuario(String username, String password) {
+    public Usuario(String username, String senha) {
         this.username = username;
-        this.password = password;
+        this.senha = senha;
     }
 
     // Getters e Setters
@@ -46,21 +40,11 @@ public class Usuario {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    // Método toString (opcional, para debug e logs)
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

@@ -17,58 +17,31 @@
             </div>
 
             <ul class="patients-list">
-                <li class="patient-item selected">
+                <!-- Laço para percorrer a lista de pacientes -->
+                <li class="patient-item" th:each="paciente : ${pacientes}">
                     <div class="patient-time">
-                        <span class="name">Rafael Muniz</span>
-                        <span class="status">Em atendimento</span>
+                        <!-- Exibe o nome do paciente -->
+                        <span class="name" th:text="${paciente.nome}" th:title="${paciente.nome + ' - ' + paciente.statusProtocoloManchester}">Nome do paciente</span>
+                        <span class="status" th:text="${paciente.statusProtocoloManchester}">Status</span>
                     </div>
 
-                    <span class="urgency red"><p>Emergência</p></span>
-                </li>
+                    <!-- Exibe o grau de risco -->
+                    <span class="urgency" th:classappend="${paciente.statusProtocoloManchester == 'Emergência' ? ' red' : paciente.statusProtocoloManchester == 'Muito urgente' ? ' orange' : paciente.statusProtocoloManchester == 'Urgente' ? ' yellow' : ' green'}">
+                        <p th:text="${paciente.statusProtocoloManchester}">Grau de risco</p>
+                    </span>
 
-                <li class="patient-item">
-                    <div class="patient-time">
-                        <span class="name">Caio Pereira</span>
-                        <span class="status">Em atendimento</span>
+                    <!-- Informações adicionais que aparecerão ao passar o mouse sobre o nome -->
+                    <div class="additional-info">
+                        <p><strong>Endereço:</strong> <span th:text="${paciente.endereco}">Endereço do paciente</span></p>
+                        <p><strong>Email:</strong> <span th:text="${paciente.email}">Email</span></p>
+                        <p><strong>Telefone:</strong> <span th:text="${paciente.telefone}">Telefone</span></p>
+                        <p><strong>Plano de Saúde:</strong> <span th:text="${paciente.planoSaude}">Plano de Saúde</span></p>
+                        <p><strong>Sexo:</strong> <span th:text="${paciente.sexo}">Sexo</span></p>
+                        <p><strong>Data de Nascimento:</strong> <span th:text="${paciente.dataNascimento}">Data de Nascimento</span></p>
+                        <p><strong>Tipo Sanguíneo:</strong> <span th:text="${paciente.tipoSanguineo}">Tipo Sanguíneo</span></p>
+                        <p><strong>Histórico de Doenças:</strong> <span th:text="${paciente.historicoDoencas}">Histórico de Doenças</span></p>
+                        <p><strong>Alergias:</strong> <span th:text="${paciente.alergias}">Alergias</span></p>
                     </div>
-
-                    <span class="urgency orange"><p>Muito urgente</p></span>
-                </li>
-
-                <li class="patient-item">
-                    <div class="patient-time">
-                        <span class="name">Giovanna Nunes</span>
-                        <span class="status">25 min até atendimento</span>
-                    </div>
-
-                    <span class="urgency yellow"><p>Urgente</p></span>
-                </li>
-
-                <li class="patient-item">
-                    <div class="patient-time">
-                        <span class="name">Maria Serafim</span>
-                        <span class="status">30 min até atendimento</span>
-                    </div>
-
-                    <span class="urgency green"><p>Pouco urgente</p></span>
-                </li>
-
-                <li class="patient-item">
-                    <div class="patient-time">
-                        <span class="name">Lucas Santos</span>
-                        <span class="status">45 min até atendimento</span>
-                    </div>
-
-                    <span class="urgency green"><p>Pouco urgente</p></span>
-                </li>
-
-                <li class="patient-item">
-                    <div class="patient-time">
-                        <span class="name">Denise Rodrigues</span>
-                        <span class="status">45 min até atendimento</span>
-                    </div>
-
-                    <span class="urgency green"><p>Pouco urgente</p></span>
                 </li>
             </ul>
         </div>

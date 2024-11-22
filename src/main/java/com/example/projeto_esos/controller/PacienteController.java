@@ -28,11 +28,11 @@ public class PacienteController {
     @GetMapping("/novo")
     public String exibirFormularioCadastro(Model model) {
         model.addAttribute("paciente", new Paciente());
-        return "cadastro_pacientes"; // Nome correto do arquivo HTML
+        return "redirect:/cadastro_paciente"; // Nome correto do arquivo HTML
     }
 
     // Endpoint para salvar um paciente
-    @PostMapping
+    @PostMapping("/cadastro_paciente")
     public String salvarPaciente(@ModelAttribute("paciente") Paciente paciente) {
         pacienteService.salvarPaciente(paciente);
         return "redirect:/pacientes"; // Redireciona para a lista de pacientes
@@ -43,7 +43,7 @@ public class PacienteController {
     public String exibirFormularioEdicao(@PathVariable Long id, Model model) {
         Paciente paciente = pacienteService.buscarPacientePorId(id).orElse(null);
         model.addAttribute("paciente", paciente);
-        return "cadastro_pacientes"; // Reutiliza o mesmo arquivo de cadastro para edição
+        return "redirect:/cadastro_paciente"; // Reutiliza o mesmo arquivo de cadastro para edição
     }
 
     // Endpoint para atualizar um paciente

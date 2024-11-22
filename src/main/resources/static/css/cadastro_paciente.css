@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
+
 body {
     font-family: Arial, sans-serif;
     background: #58abff;
@@ -24,18 +28,18 @@ header {
 .section-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    width: 990px;
-    margin-left: 415px;
+    margin-bottom: 20px;
+    font-size: 20px;
 }
 
 .form-header {
     padding: 10px;
-    border-bottom: 1px solid #f0f0f0;
-    background-color: #f0f0f0;
+    border-bottom: 1px solid #ffffff;
+    background-color: #ffffff;
     width: 275px;
     border-radius: 8px;
     cursor: pointer;
+    color: black;
 }
 
 .form-header:hover {
@@ -62,10 +66,14 @@ i {
     font-weight: bolder;
 }
 
+.new-patient-btn a {
+    color: black;
+}
+
 .save-header {
     padding: 10px;
-    border-bottom: 1px solid #f0f0f0;
-    background-color: #f0f0f0;
+    border-bottom: 1px solid #ffffff;
+    background-color: #ffffff;
     width: 275px;
     border-radius: 8px;
     cursor: pointer;

@@ -1,10 +1,7 @@
 package com.example.projeto_esos.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Paciente {
@@ -27,7 +24,10 @@ public class Paciente {
 
     // Informações médicas
     private String sexo;
-    private String dataNascimento; // Usar formato dd/mm/aaaa
+
+    @Column(name = "data_nascimento")
+    private LocalDate dataNascimento;
+
     private String tipoSanguineo;
     private String historicoDoencas;
     private String alergias;
@@ -39,7 +39,117 @@ public class Paciente {
     private String medicacao;
 
     // Getters e Setters
-    // [os getters e setters seguem a mesma estrutura da resposta anterior]
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNomePaciente() {
+        return nomePaciente;
+    }
+
+    public void setNomePaciente(String nomePaciente) {
+        this.nomePaciente = nomePaciente;
+    }
+
+    public String getQueixaPaciente() {
+        return queixaPaciente;
+    }
+
+    public void setQueixaPaciente(String queixaPaciente) {
+        this.queixaPaciente = queixaPaciente;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getPlanoSaude() {
+        return planoSaude;
+    }
+
+    public void setPlanoSaude(String planoSaude) {
+        this.planoSaude = planoSaude;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getTipoSanguineo() {
+        return tipoSanguineo;
+    }
+
+    public void setTipoSanguineo(String tipoSanguineo) {
+        this.tipoSanguineo = tipoSanguineo;
+    }
+
+    public String getHistoricoDoencas() {
+        return historicoDoencas;
+    }
+
+    public void setHistoricoDoencas(String historicoDoencas) {
+        this.historicoDoencas = historicoDoencas;
+    }
+
+    public String getAlergias() {
+        return alergias;
+    }
+
+    public void setAlergias(String alergias) {
+        this.alergias = alergias;
+    }
+
+    public String getStatusProtocoloManchester() {
+        return statusProtocoloManchester;
+    }
+
+    public void setStatusProtocoloManchester(String statusProtocoloManchester) {
+        this.statusProtocoloManchester = statusProtocoloManchester;
+    }
+
+    public String getMedicacao() {
+        return medicacao;
+    }
+
+    public void setMedicacao(String medicacao) {
+        this.medicacao = medicacao;
+    }
 
     @Override
     public String toString() {
@@ -52,32 +162,12 @@ public class Paciente {
                 ", telefone='" + telefone + '\'' +
                 ", planoSaude='" + planoSaude + '\'' +
                 ", sexo='" + sexo + '\'' +
-                ", dataNascimento='" + dataNascimento + '\'' +
+                ", dataNascimento=" + dataNascimento +
                 ", tipoSanguineo='" + tipoSanguineo + '\'' +
                 ", historicoDoencas='" + historicoDoencas + '\'' +
                 ", alergias='" + alergias + '\'' +
                 ", statusProtocoloManchester='" + statusProtocoloManchester + '\'' +
                 ", medicacao='" + medicacao + '\'' +
                 '}';
-    }
-
-    public void setId(Long id2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setId'");
-    }
-
-    public Object getNomePaciente() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNomePaciente'");
-    }
-
-    public void setNomePaciente(Object nomePaciente2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setNomePaciente'");
-    }
-
-    public Object getQueixaPaciente() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getQueixaPaciente'");
     }
 }
