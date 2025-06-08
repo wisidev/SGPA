@@ -2,6 +2,7 @@ package com.example.projeto_esos.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.*;
 
 import java.time.LocalDate;

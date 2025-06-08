@@ -5,7 +5,7 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://nechks:nechks@cluster0.9taug.mongodb.net/PIE
+      uri: mongodb+srv://PIE:PIE@cluster0.fbpy6li.mongodb.net/PIE
 
   # H2 + JPA config
   datasource:

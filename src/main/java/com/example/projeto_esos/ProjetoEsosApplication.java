@@ -13,9 +13,8 @@ public class ProjetoEsosApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProjetoEsosApplication.class, args);
 
-        // Tentativa de abrir o navegador automaticamente
         try {
-            String url = "http://localhost:8080"; // Substitua pela URL inicial desejada
+            String url = "http://localhost:8080";
             if (Desktop.isDesktopSupported()) {
                 Desktop.getDesktop().browse(new URI(url));
             } else {
