@@ -1,4 +1,4 @@
-package com.example.projeto_esos.repository;
+package com.example.projeto_esos.repository.h2;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

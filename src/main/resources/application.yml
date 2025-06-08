@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+# MongoDB config
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://nechks:nechks@cluster0.9taug.mongodb.net/PIE
+
+  # H2 + JPA config
+  datasource:
+    url: jdbc:h2:mem:clinicadb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
+    cache: false

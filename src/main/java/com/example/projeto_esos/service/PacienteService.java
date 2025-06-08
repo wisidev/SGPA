@@ -1,23 +1,23 @@
 package com.example.projeto_esos.service;
 
 import com.example.projeto_esos.model.Paciente;
-import com.example.projeto_esos.repository.PacienteRepository;
+import com.example.projeto_esos.repository.mongo.PacienteRepository;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Component
 @Service
+@RequiredArgsConstructor
 public class PacienteService {
 
     @Autowired
     private PacienteRepository pacienteRepository;
-
-    // Salvar um novo paciente
-    public Paciente salvarPaciente(Paciente paciente) {
-        return pacienteRepository.save(paciente);
-    }
 
     // Buscar todos os pacientes
     public List<Paciente> buscarTodosPacientes() {
@@ -25,12 +25,12 @@ public class PacienteService {
     }
 
     // Buscar paciente por ID
-    public Optional<Paciente> buscarPacientePorId(Long id) {
+    public Optional<Paciente> buscarPacientePorId(String id) {
         return pacienteRepository.findById(id);
     }
 
     // Atualizar paciente existente
-    public Paciente atualizarPaciente(Long id, Paciente pacienteAtualizado) {
+    public Paciente atualizarPaciente(String id, Paciente pacienteAtualizado) {
         return pacienteRepository.findById(id).map(paciente -> {
             paciente.setNomePaciente(pacienteAtualizado.getNomePaciente());
             paciente.setQueixaPaciente(pacienteAtualizado.getQueixaPaciente());
@@ -50,7 +50,7 @@ public class PacienteService {
     }
 
     // Deletar paciente por ID
-    public void deletarPaciente(Long id) {
+    public void deletarPaciente(String id) {
         pacienteRepository.deleteById(id);
     }
 }

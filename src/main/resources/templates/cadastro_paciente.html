@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -11,28 +11,31 @@
 
 <body>
     <div class="container">
-        <form class="patient-form" id="patient-form" action="/pacientes/salvar" method="post">
+        <form class="patient-form" th:action="@{/cadastro_paciente}" method="post">
             <section class="section-header">
                 <div class="form-header">
                     <i class="bi bi-list"></i>
-                    <button class="new-patient-btn"><a th:href="@{/listar_pacientes}">Listar Pacientes</a></button>
+                    <!-- Altere o link para listar pacientes -->
+                    <button class="new-patient-btn" type="button">
+                        <a th:href="@{/pacientes}">Listar Pacientes</a>
+                    </button>
                 </div>
-        
+
                 <div class="save-header">
                     <i class="bi bi-check-lg"></i>
-                    <button class="save-patient-btn" onclick="savePatient()">Salvar Paciente</button>
+                    <button class="save-patient-btn" type="submit">Salvar Paciente</button>
                 </div>
             </section>
 
             <div class="form-group">
                 <label for="patient-name">Nome do paciente:</label>
-                <input type="text" id="patient-name" required>
+                <input type="text" id="patient-name" name="nomePaciente" th:value="${nomePaciente}" required>
             </div>
 
             <section class="form-wrapper">
                 <div class="form-text">
                     <label for="patient-complaint">Queixa do paciente:</label>
-                    <textarea id="patient-complaint" required></textarea>
+                    <textarea id="patient-complaint" name="queixaPaciente" th:value="${queixaPaciente}" required></textarea>
                 </div>
 
                 <div class="form-person">
@@ -40,19 +43,23 @@
 
                     <div class="info-grid">
                         <div class="info-item">
-                            <input type="text" class="address" id="address" placeholder="Endereço:" required>
+                            <input type="text" class="address" id="address" name="endereco" th:value="${endereco}"
+                                placeholder="Endereço:" required>
                         </div>
 
                         <div class="info-item">
-                            <input type="email" class="email" id="email" placeholder="E-mail:" required>
+                            <input type="email" class="email" id="email" name="email" th:value="${email}" placeholder="E-mail:"
+                                required>
                         </div>
 
                         <div class="info-item">
-                            <input type="tel" class="telefone" id="phone" placeholder="Telefone:" required>
+                            <input type="tel" class="telefone" id="phone" name="telefone" th:value="${telefone}" placeholder="Telefone:"
+                                required>
                         </div>
 
                         <div class="info-item">
-                            <input type="text" class="health-plan" id="health-plan" placeholder="Plano de saúde:">
+                            <input type="text" class="health-plan" id="health-plan" name="planoSaude" th:value="${planoSaude}"
+                                placeholder="Plano de saúde:">
                         </div>
                     </div>
                 </div>
@@ -63,81 +70,57 @@
 
                 <div class="medical-grid">
                     <div class="medical-item">
-                        <input type="text" id="gender" placeholder="Sexo:">
+                        <input type="text" id="gender" name="sexo" th:value="${sexo}" placeholder="Sexo:">
                     </div>
 
                     <div class="medical-item">
-                        <input type="date" id="dob" placeholder="Data de nascimento:">
+                        <input type="date" id="dob" name="dataNascimento" th:value="${dataNascimento}" placeholder="Data de nascimento:">
                     </div>
 
                     <div class="medical-item">
-                        <input type="text" id="blood-type" placeholder="Tipo sanguíneo:">
+                        <input type="text" id="blood-type" name="tipoSanguineo" th:value="${tipoSanguineo}" placeholder="Tipo sanguíneo:">
                     </div>
 
                     <div class="medical-item">
-                        <input type="text" id="medical-history" placeholder="Histórico de doenças:">
+                        <input type="text" id="medical-history" name="historicoDoencas" th:value="${historicoDoencas}"
+                            placeholder="Histórico de doenças:">
                     </div>
 
                     <div class="medical-item">
-                        <input type="text" id="allergies" placeholder="Alergias:">
+                        <input type="text" id="allergies" name="alergias" th:value="${alergias}" placeholder="Alergias:">
                     </div>
                 </div>
             </div>
 
             <div class="status-section">
                 <label>Status Protocolo de Manchester:</label>
+                <input type="hidden" id="risk" name="statusProtocoloManchester" th:value="${statusProtocoloManchester}" />
 
                 <div class="status-buttons">
                     <button class="status emergency" type="button" onclick="setRisk('Emergência')">Emergência</button>
-                    <button class="status very-urgent" type="button" onclick="setRisk('Muito urgente')">Muito urgente</button>
+                    <button class="status very-urgent" type="button" onclick="setRisk('Muito urgente')">Muito
+                        urgente</button>
                     <button class="status urgent" type="button" onclick="setRisk('Urgente')">Urgente</button>
-                    <button class="status low-urgent" type="button" onclick="setRisk('Pouco urgente')">Pouco urgente</button>
-                    <button class="status non-urgent" type="button" onclick="setRisk('Não urgente')">Não urgente</button>
+                    <button class="status low-urgent" type="button" onclick="setRisk('Pouco urgente')">Pouco
+                        urgente</button>
+                    <button class="status non-urgent" type="button" onclick="setRisk('Não urgente')">Não
+                        urgente</button>
                 </div>
             </div>
 
             <div class="medication-section">
                 <label class="medication-btn">Informar medicação</label>
-                <textarea id="medication"></textarea>
+                <textarea id="medication" name="medicacao" th:value="${medicacao}"></textarea>
             </div>
         </form>
     </div>
 
     <script>
-
         function setRisk(risk) {
+            document.getElementById("risk").value = risk;
             alert("Grau de risco selecionado: " + risk);
-            // Aqui você pode salvar o grau de risco em uma variável global ou enviá-lo ao servidor
-        }
-
-        function savePatient() {
-            const form = document.getElementById("patient-form");
-            if (form.checkValidity()) {
-                // Aqui você deve implementar o envio dos dados ao servidor (exemplo usando fetch)
-                const patientData = {
-                    name: document.getElementById("patient-name").value,
-                    complaint: document.getElementById("patient-complaint").value,
-                    address: document.getElementById("address").value,
-                    email: document.getElementById("email").value,
-                    phone: document.getElementById("phone").value,
-                    healthPlan: document.getElementById("health-plan").value,
-                    gender: document.getElementById("gender").value,
-                    dob: document.getElementById("dob").value,
-                    bloodType: document.getElementById("blood-type").value,
-                    medicalHistory: document.getElementById("medical-history").value,
-                    allergies: document.getElementById("allergies").value,
-                    medication: document.getElementById("medication").value,
-                };
-
-                console.log("Paciente salvo:", patientData);
-                alert("Paciente salvo com sucesso!");
-                form.reset();
-            } else {
-                alert("Preencha todos os campos obrigatórios!");
-            }
         }
     </script>
-
 </body>
 
 </html>

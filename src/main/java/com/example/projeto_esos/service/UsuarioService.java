@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.projeto_esos.model.Usuario;
-import com.example.projeto_esos.repository.UsuarioRepository;
+import com.example.projeto_esos.repository.h2.UsuarioRepository;
 
 @Service
 public class UsuarioService {

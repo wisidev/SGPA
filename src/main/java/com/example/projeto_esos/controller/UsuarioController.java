@@ -19,8 +19,7 @@ public class UsuarioController {
     // Tela de login
     @GetMapping("/login")
     public String loginPage() {
-        System.out.println("Rota /login acessada"); // Log para debug
-        return "login"; // Retorna o template login.html
+        return "login";
     }
 
     // Processa o login
@@ -29,18 +28,18 @@ public class UsuarioController {
         Usuario usuarioExistente = usuarioService.findByUsername(usuario);
 
         if (usuarioExistente != null && usuarioExistente.getSenha().equals(senha)) {
-            // Redireciona para a página de cadastro de pacientes após login bem-sucedido
+            // Redireciona para o formulário de cadastro CORRETAMENTE
             return "redirect:/cadastro_paciente";
         } else {
             model.addAttribute("erro", "Usuário ou senha inválidos.");
-            return "login"; // Retorna à página de login com erro
+            return "login";
         }
     }
 
     // Tela de cadastro de usuário
     @GetMapping("/cadastro_usuario")
     public String cadastroUsuarioPage() {
-        return "cadastro_usuario"; // Retorna o template cadastro_usuario.html
+        return "cadastro_usuario";
     }
 
     // Processa o cadastro de usuário
@@ -48,12 +47,8 @@ public class UsuarioController {
     public String processarCadastro(@RequestParam String usuario, @RequestParam String senha, Model model) {
         Usuario novoUsuario = new Usuario(usuario, senha);
         usuarioService.salvarUsuario(novoUsuario);
-        return "redirect:/login"; // Redireciona para a página de login após o cadastro
+        return "redirect:/login";
     }
 
-    // Tela de cadastro de pacientes
-    @GetMapping("/cadastro_paciente")
-    public String cadastroPacientePage() {
-        return "cadastro_paciente"; // Retorna o template cadastro_paciente.html
-    }
+    // Remova o método cadastroPacientePage() - isso deve ficar no PacienteController
 }
