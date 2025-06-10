@@ -59,18 +59,39 @@
           </div>
 
           <ul class="patients-list">
-            <li class="patient" th:each="paciente : ${pacientes}">
-              <span th:text="${paciente.nomePaciente}">Nome do paciente</span>
-              <small></small>
+            <li
+              class="patient"
+              th:each="paciente : ${pacientes}"
+              th:attr="data-id=${paciente.id}"
+            >
+              <!-- Nome clicável -->
+              <span
+                class="patient-name"
+                onclick="toggleDetails(this)"
+                style="cursor: pointer"
+              >
+                <strong th:text="${paciente.nomePaciente}"
+                  >Nome do paciente</strong
+                >
+              </span>
+
+              <!-- Status logo abaixo do nome -->
               <div
+                class="status-tag"
                 th:text="${paciente.statusProtocoloManchester}"
                 th:classappend="${paciente.statusProtocoloManchester == 'Emergência'} ? ' tag red' : 
                       (${paciente.statusProtocoloManchester == 'Muito urgente'} ? ' tag orange' :
                       (${paciente.statusProtocoloManchester == 'Urgente'} ? ' tag yellow' :
                       (${paciente.statusProtocoloManchester == 'Pouco urgente'} ? ' tag green' :
                       (${paciente.statusProtocoloManchester == 'Não urgente'} ? ' tag lightblue' : ' tag gray'))))"
+                style="margin-top: 4px"
               >
                 Status
+              </div>
+
+              <!-- Detalhes ocultos inicialmente -->
+              <div class="detalhes-paciente">
+                <!-- Conteúdo será preenchido via JS -->
               </div>
             </li>
           </ul>

@@ -93,3 +93,49 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 updateClock(); // chama imediatamente
+
+function toggleDetails(element) {
+  const li = element.closest("li");
+  const detalhesBox = li.querySelector(".detalhes-paciente");
+  const statusBox = li.querySelector(".status-tag");
+  const pacienteId = li.dataset.id;
+
+  if (
+    detalhesBox.style.display === "none" ||
+    detalhesBox.style.display === ""
+  ) {
+    // Oculta o status
+    statusBox.style.display = "none";
+
+    // Busca do backend
+    fetch(`/paciente/detalhes/${pacienteId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        detalhesBox.innerHTML = `
+          <ul>
+            <li><strong>Nome:</strong> ${data.nomePaciente}</li>
+            <li><strong>Queixa:</strong> ${data.queixaPaciente}</li>
+            <li><strong>Endereço:</strong> ${data.endereco}</li>
+            <li><strong>Email:</strong> ${data.email}</li>
+            <li><strong>Telefone:</strong> ${data.telefone}</li>
+            <li><strong>Plano de Saúde:</strong> ${data.planoSaude}</li>
+            <li><strong>Sexo:</strong> ${data.sexo}</li>
+            <li><strong>Data de Nascimento:</strong> ${data.dataNascimento}</li>
+            <li><strong>Tipo Sanguíneo:</strong> ${data.tipoSanguineo}</li>
+            <li><strong>Histórico de Doenças:</strong> ${data.historicoDoencas}</li>
+            <li><strong>Alergias:</strong> ${data.alergias}</li>
+            <li><strong>Medicação:</strong> ${data.medicacao}</li>
+          </ul>
+        `;
+        detalhesBox.style.display = "block";
+      })
+      .catch((error) => {
+        detalhesBox.innerHTML = `<span style="color: red;">Erro ao carregar dados</span>`;
+        detalhesBox.style.display = "block";
+      });
+  } else {
+    // Oculta os detalhes e mostra o status novamente
+    detalhesBox.style.display = "none";
+    statusBox.style.display = "inline-block";
+  }
+}

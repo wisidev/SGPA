@@ -170,21 +170,6 @@ body {
   background: #ffccbc;
 }
 
-.tag {
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 12px;
-  color: #ffffff;
-}
-
-.tag.green {
-  background: #66bb6a;
-}
-
-.tag.red {
-  background: #e53935;
-}
-
 .patient-details {
   background: #f4f6fc;
   padding: 20px;
@@ -266,13 +251,21 @@ body {
 }
 
 .tag {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.tag {
   padding: 4px 8px;
   border-radius: 4px;
   color: white;
   font-weight: bold;
   display: inline-block;
-  min-width: 90px;
+  width: 100px; /* tamanho fixo */
   text-align: center;
+  box-sizing: border-box; /* garante que o padding não aumente o tamanho total */
 }
 
 .tag.red {
@@ -297,4 +290,14 @@ body {
 
 .tag.gray {
   background-color: #7f8c8d; /* cinza, caso status seja diferente */
+}
+
+.detalhes-paciente {
+  display: none;
+  margin-top: 8px;
+  padding-left: 10px;
+  border-left: 2px solid #ccc;
+  font-size: 14px;
+  color: #555;
+  margin-left: -50px;
 }
