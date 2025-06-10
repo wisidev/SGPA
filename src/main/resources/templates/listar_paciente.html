@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Paciente</title>
+    <link rel="stylesheet" th:href="@{/css/listar_paciente.css}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="container">
+          <div class="welcome">
+            <img
+              th:src="@{/images/profile.png}"
+              alt="Foto de perfil"
+              class="profile-img"
+            />
+            <p>
+              Bem-vindo novamente, <br /><span class="highlight">Willian!</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="calendar">
+          <div class="header">
+            <button id="prev">&#9664;</button>
+            <span id="monthYear"></span>
+            <button id="next">&#9654;</button>
+          </div>
+          <div class="day-names">
+            <div>Dom</div>
+            <div>Seg</div>
+            <div>Ter</div>
+            <div>Qua</div>
+            <div>Qui</div>
+            <div>Sex</div>
+            <div>Sáb</div>
+          </div>
+          <div class="days" id="calendarDays"></div>
+
+          <!-- ⏰ Relógio -->
+          <div id="clock"></div>
+        </div>
+      </aside>
+
+      <!-- Main Section -->
+      <main class="main">
+        <div class="patients">
+          <div class="patients-header">
+            <h3>Pacientes</h3>
+            <p>Organizar por: <span>ordem de chegada</span></p>
+          </div>
+
+          <ul class="patients-list">
+            <li class="patient" th:each="paciente : ${pacientes}">
+              <span th:text="${paciente.nomePaciente}">Nome do paciente</span>
+              <small>Exemplo: 30 min até atendimento</small>
+              <div
+                class="tag green"
+                th:text="${paciente.statusProtocoloManchester}"
+              >
+                Status
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <section class="patient-details">
+          <h3>Rafael Muniz</h3>
+
+          <p>Status: <span class="status red">Muito urgente</span></p>
+
+          <div class="details">
+            <div><strong>Data de nascimento:</strong> 25/04/1998</div>
+            <div><strong>Altura:</strong> 1,74m</div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script th:src="@{/js/listar_paciente.js}"></script>
+  </body>
+</html>
