@@ -1,126 +1,284 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro de Paciente</title>
-    <link rel="stylesheet" th:href="@{/css/cadastro_paciente.css}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-</head>
+    <link rel="stylesheet" th:href="@{/css/cadastro_paciente.css}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <form class="patient-form" th:action="@{/cadastro_paciente}" method="post">
-            <section class="section-header">
-                <div class="form-header">
-                    <i class="bi bi-list"></i>
-                    <!-- Altere o link para listar pacientes -->
-                    <button class="new-patient-btn" type="button">
-                        <a th:href="@{/pacientes}">Listar Pacientes</a>
-                    </button>
-                </div>
+      <form
+        class="patient-form"
+        th:action="@{/cadastro_paciente}"
+        method="post"
+      >
+        <section class="section-header">
+          <div class="form-header">
+            <i class="bi bi-list"></i>
+            <!-- Altere o link para listar pacientes -->
+            <button class="new-patient-btn" type="button">
+              <a th:href="@{/pacientes}">Listar Pacientes</a>
+            </button>
+          </div>
 
-                <div class="save-header">
-                    <i class="bi bi-check-lg"></i>
-                    <button class="save-patient-btn" type="submit">Salvar Paciente</button>
-                </div>
-            </section>
+          <div class="save-header">
+            <i class="bi bi-check-lg"></i>
+            <button class="save-patient-btn" type="submit">
+              Salvar Paciente
+            </button>
+          </div>
+        </section>
 
-            <div class="form-group">
-                <label for="patient-name">Nome do paciente:</label>
-                <input type="text" id="patient-name" name="nomePaciente" th:value="${nomePaciente}" required>
+        <div class="form-group">
+          <label for="patient-name">Nome do paciente:</label>
+          <input
+            type="text"
+            id="patient-name"
+            name="nomePaciente"
+            th:value="${nomePaciente}"
+            required
+            onclick="showHelp('help-name')"
+          />
+          <div id="help-name" class="help-box" style="display: none">
+            Exemplo: Willian Guilherme da Silva
+          </div>
+        </div>
+
+        <section class="form-wrapper">
+          <div class="form-text">
+            <label for="patient-complaint">Queixa do paciente:</label>
+            <textarea
+              id="patient-complaint"
+              name="queixaPaciente"
+              th:value="${queixaPaciente}"
+              required
+              onclick="showHelp('help-complaint')"
+            ></textarea>
+            <div id="help-complaint" class="help-box" style="display: none">
+              Exemplo: Sinto dores de cabeça ao acordar
+            </div>
+          </div>
+
+          <div class="form-person">
+            <label class="info-title">Informações pessoais:</label>
+
+            <div class="info-grid">
+              <div class="info-item">
+                <input
+                  type="text"
+                  class="address"
+                  id="address"
+                  name="endereco"
+                  th:value="${endereco}"
+                  placeholder="Endereço:"
+                  required
+                  onclick="showHelp('help-address')"
+                />
+                <div id="help-address" class="help-box" style="display: none">
+                  Exemplo: Rua do Mamão
+                </div>
+              </div>
+
+              <div class="info-item">
+                <input
+                  type="email"
+                  class="email"
+                  id="email"
+                  name="email"
+                  th:value="${email}"
+                  placeholder="E-mail:"
+                  required
+                  onclick="showHelp('help-email')"
+                />
+                <div id="help-email" class="help-box" style="display: none">
+                  Exemplo: willianguis@outlook.com
+                </div>
+              </div>
+
+              <div class="info-item">
+                <input
+                  type="tel"
+                  class="telefone"
+                  id="phone"
+                  name="telefone"
+                  th:value="${telefone}"
+                  placeholder="Telefone:"
+                  required
+                  onclick="showHelp('help-phone')"
+                />
+                <div id="help-phone" class="help-box" style="display: none">
+                  Exemplo: (27) 99749-2205
+                </div>
+              </div>
+
+              <div class="info-item">
+                <input
+                  type="text"
+                  class="health-plan"
+                  id="health-plan"
+                  name="planoSaude"
+                  th:value="${planoSaude}"
+                  placeholder="Plano de saúde:"
+                  onclick="showHelp('help-plan')"
+                />
+                <div id="help-plan" class="help-box" style="display: none">
+                  Exemplo: Unimed
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="medical-container">
+          <label class="medical-title">Informações médicas:</label>
+
+          <div class="medical-grid">
+            <div class="medical-item">
+              <input
+                type="text"
+                id="gender"
+                name="sexo"
+                th:value="${sexo}"
+                placeholder="Sexo:"
+                onclick="showHelp('help-gender')"
+              />
+              <div id="help-gender" class="help-box" style="display: none">
+                Exemplo: M
+              </div>
             </div>
 
-            <section class="form-wrapper">
-                <div class="form-text">
-                    <label for="patient-complaint">Queixa do paciente:</label>
-                    <textarea id="patient-complaint" name="queixaPaciente" th:value="${queixaPaciente}" required></textarea>
-                </div>
-
-                <div class="form-person">
-                    <label class="info-title">Informações pessoais:</label>
-
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <input type="text" class="address" id="address" name="endereco" th:value="${endereco}"
-                                placeholder="Endereço:" required>
-                        </div>
-
-                        <div class="info-item">
-                            <input type="email" class="email" id="email" name="email" th:value="${email}" placeholder="E-mail:"
-                                required>
-                        </div>
-
-                        <div class="info-item">
-                            <input type="tel" class="telefone" id="phone" name="telefone" th:value="${telefone}" placeholder="Telefone:"
-                                required>
-                        </div>
-
-                        <div class="info-item">
-                            <input type="text" class="health-plan" id="health-plan" name="planoSaude" th:value="${planoSaude}"
-                                placeholder="Plano de saúde:">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <div class="medical-container">
-                <label class="medical-title">Informações médicas:</label>
-
-                <div class="medical-grid">
-                    <div class="medical-item">
-                        <input type="text" id="gender" name="sexo" th:value="${sexo}" placeholder="Sexo:">
-                    </div>
-
-                    <div class="medical-item">
-                        <input type="date" id="dob" name="dataNascimento" th:value="${dataNascimento}" placeholder="Data de nascimento:">
-                    </div>
-
-                    <div class="medical-item">
-                        <input type="text" id="blood-type" name="tipoSanguineo" th:value="${tipoSanguineo}" placeholder="Tipo sanguíneo:">
-                    </div>
-
-                    <div class="medical-item">
-                        <input type="text" id="medical-history" name="historicoDoencas" th:value="${historicoDoencas}"
-                            placeholder="Histórico de doenças:">
-                    </div>
-
-                    <div class="medical-item">
-                        <input type="text" id="allergies" name="alergias" th:value="${alergias}" placeholder="Alergias:">
-                    </div>
-                </div>
+            <div class="medical-item">
+              <input
+                type="date"
+                id="dob"
+                name="dataNascimento"
+                th:value="${dataNascimento}"
+                placeholder="Data de nascimento:"
+                onclick="showHelp('help-dob')"
+              />
+              <div id="help-dob" class="help-box" style="display: none">
+                Exemplo: 09/03/2002
+              </div>
             </div>
 
-            <div class="status-section">
-                <label>Status Protocolo de Manchester:</label>
-                <input type="hidden" id="risk" name="statusProtocoloManchester" th:value="${statusProtocoloManchester}" />
-
-                <div class="status-buttons">
-                    <button class="status emergency" type="button" onclick="setRisk('Emergência')">Emergência</button>
-                    <button class="status very-urgent" type="button" onclick="setRisk('Muito urgente')">Muito
-                        urgente</button>
-                    <button class="status urgent" type="button" onclick="setRisk('Urgente')">Urgente</button>
-                    <button class="status low-urgent" type="button" onclick="setRisk('Pouco urgente')">Pouco
-                        urgente</button>
-                    <button class="status non-urgent" type="button" onclick="setRisk('Não urgente')">Não
-                        urgente</button>
-                </div>
+            <div class="medical-item">
+              <input
+                type="text"
+                id="blood-type"
+                name="tipoSanguineo"
+                th:value="${tipoSanguineo}"
+                placeholder="Tipo sanguíneo:"
+                onclick="showHelp('help-blood')"
+              />
+              <div id="help-blood" class="help-box" style="display: none">
+                Exemplo: O-
+              </div>
             </div>
 
-            <div class="medication-section">
-                <label class="medication-btn">Informar medicação</label>
-                <textarea id="medication" name="medicacao" th:value="${medicacao}"></textarea>
+            <div class="medical-item">
+              <input
+                type="text"
+                id="medical-history"
+                name="historicoDoencas"
+                th:value="${historicoDoencas}"
+                placeholder="Histórico de doenças:"
+                onclick="showHelp('help-medical')"
+              />
+              <div id="help-medical" class="help-box" style="display: none">
+                Exemplo: Diabete
+              </div>
             </div>
-        </form>
+
+            <div class="medical-item">
+              <input
+                type="text"
+                id="allergies"
+                name="alergias"
+                th:value="${alergias}"
+                placeholder="Alergias:"
+                onclick="showHelp('help-allergies')"
+              />
+              <div id="help-allergies" class="help-box" style="display: none">
+                Exemplo: Poeira
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="status-section">
+          <label>Status Protocolo de Manchester:</label>
+          <input
+            type="hidden"
+            id="risk"
+            name="statusProtocoloManchester"
+            th:value="${statusProtocoloManchester}"
+          />
+
+          <div class="status-buttons">
+            <button
+              class="status emergency"
+              type="button"
+              onclick="setRisk('Emergência')"
+            >
+              Emergência
+            </button>
+            <button
+              class="status very-urgent"
+              type="button"
+              onclick="setRisk('Muito urgente')"
+            >
+              Muito urgente
+            </button>
+            <button
+              class="status urgent"
+              type="button"
+              onclick="setRisk('Urgente')"
+            >
+              Urgente
+            </button>
+            <button
+              class="status low-urgent"
+              type="button"
+              onclick="setRisk('Pouco urgente')"
+            >
+              Pouco urgente
+            </button>
+            <button
+              class="status non-urgent"
+              type="button"
+              onclick="setRisk('Não urgente')"
+            >
+              Não urgente
+            </button>
+          </div>
+        </div>
+
+        <div class="medication-section">
+          <label class="medication-btn">Informar medicação</label>
+          <textarea
+            id="medication"
+            name="medicacao"
+            th:value="${medicacao}"
+            onclick="showHelp('help-medication')"
+          ></textarea>
+          <div id="help-medication" class="help-box" style="display: none">
+            Exemplo: Tomar Dorflex 3 vezes ao dia
+          </div>
+        </div>
+      </form>
     </div>
 
     <script>
-        function setRisk(risk) {
-            document.getElementById("risk").value = risk;
-            alert("Grau de risco selecionado: " + risk);
-        }
+      function setRisk(risk) {
+        document.getElementById("risk").value = risk;
+        alert("Grau de risco selecionado: " + risk);
+      }
     </script>
-</body>
-
+  </body>
 </html>

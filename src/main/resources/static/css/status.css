@@ -1,0 +1,21 @@
+.help-box {
+  background-color: #eef6fd;
+  border: 1px solid #99c2ff;
+  padding: 8px 12px;
+  margin-top: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  max-width: 300px;
+}
+
+.help-box2 {
+  background-color: #eef6fd;
+  border: 1px solid #99c2ff;
+  padding: 8px 12px;
+  margin-top: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  max-width: 300px;
+}
