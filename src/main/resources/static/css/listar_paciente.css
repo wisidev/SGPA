@@ -33,6 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 360px;
 }
 
 .container {
@@ -262,4 +263,38 @@ body {
   width: fit-content; /* largura do conteúdo */
   margin: 20px auto 0 auto; /* margem superior 20px, e centralizado */
   text-align: center; /* para garantir o texto centrado */
+}
+
+.tag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  min-width: 90px;
+  text-align: center;
+}
+
+.tag.red {
+  background-color: #e74c3c; /* vermelho */
+}
+
+.tag.orange {
+  background-color: #e67e22; /* laranja */
+}
+
+.tag.yellow {
+  background-color: #f1c40f; /* amarelo */
+}
+
+.tag.green {
+  background-color: #27ae60; /* verde */
+}
+
+.tag.lightblue {
+  background-color: #5dade2; /* azul claro */
+}
+
+.tag.gray {
+  background-color: #7f8c8d; /* cinza, caso status seja diferente */
 }

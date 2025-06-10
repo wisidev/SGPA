@@ -61,27 +61,20 @@
           <ul class="patients-list">
             <li class="patient" th:each="paciente : ${pacientes}">
               <span th:text="${paciente.nomePaciente}">Nome do paciente</span>
-              <small>Exemplo: 30 min até atendimento</small>
+              <small></small>
               <div
-                class="tag green"
                 th:text="${paciente.statusProtocoloManchester}"
+                th:classappend="${paciente.statusProtocoloManchester == 'Emergência'} ? ' tag red' : 
+                      (${paciente.statusProtocoloManchester == 'Muito urgente'} ? ' tag orange' :
+                      (${paciente.statusProtocoloManchester == 'Urgente'} ? ' tag yellow' :
+                      (${paciente.statusProtocoloManchester == 'Pouco urgente'} ? ' tag green' :
+                      (${paciente.statusProtocoloManchester == 'Não urgente'} ? ' tag lightblue' : ' tag gray'))))"
               >
                 Status
               </div>
             </li>
           </ul>
         </div>
-
-        <section class="patient-details">
-          <h3>Rafael Muniz</h3>
-
-          <p>Status: <span class="status red">Muito urgente</span></p>
-
-          <div class="details">
-            <div><strong>Data de nascimento:</strong> 25/04/1998</div>
-            <div><strong>Altura:</strong> 1,74m</div>
-          </div>
-        </section>
       </main>
     </div>
     <script th:src="@{/js/listar_paciente.js}"></script>
